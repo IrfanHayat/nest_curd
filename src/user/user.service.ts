@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import  {User} from './interfaces/user.interface';
 import {Model} from 'mongoose';
-import {InjectModel} from '@nestjs/mongoose';
+import {InjectModel} from '@nestjs/mongoose'; // InjectModel is use for injecting model name and this name must be same as which is use in services module 
 import { UserSchema } from './schemas/user.schema';
 
 @Injectable()  
@@ -19,7 +19,13 @@ async createSingleUser(user):Promise<User>{
 }
 
 
+async updateSingleUser(id,user):Promise<User>{
+     return await this.userModel.findByIdAndUpdate(id,user,{new:true})
+}
 
+async deleteSingleUser(id):Promise<User>{
+     return await this.userModel.deleteOne({_id:id})
+}
 
 
 }

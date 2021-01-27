@@ -16,4 +16,17 @@ createSingleUser(@Body() user:User):Promise<User>{
     return this.userService.createSingleUser(user);
 }
 
+
+@Put('updateSingleUser/:id')
+updateSingleUser(@Param('id')id,@Body()user:User ):Promise<User>{
+    return this.userService.updateSingleUser(id,user);
 }
+
+@Delete('deleteSingleUser/:id')
+deleteSingleUser(@Param('id')id ):Promise<User>{
+    return this.userService.deleteSingleUser(id);
+}
+
+
+}
+
